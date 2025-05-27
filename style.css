@@ -296,38 +296,23 @@ footer {
 
 /* Media Queries para pantallas más pequeñas */
 @media (max-width: 600px) {
-    body { padding: 15px; }
-    .container { padding: 20px; }
-    h1 { font-size: 1.8em; }
-    p { font-size: 1em; }
-    .link-button { padding: 12px 20px; font-size: 1em; margin: 0; }
-    .link-button.youtube { padding: 8px 20px; }
-    .link-button.youtube span:first-child { font-size: 1.1em; }
-    .link-button.youtube .youtube-sub-text { font-size: 0.8em; }
-
-    /* Ajuste para el botón de donación en la esquina para pantallas pequeñas */
     .donate-dropdown {
-        position: static; /* Vuelve a posicionamiento normal en pantallas pequeñas */
-        margin-top: 15px;
-        display: block;
-        width: 100%;
-        max-width: 300px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center; /* Centrar el botón principal */
+        position: absolute; /* Mantiene el posicionamiento absoluto */
+        top: 10px; /* Más cerca de la esquina superior */
+        right: 10px; /* Más cerca de la esquina derecha */
+        width: auto; /* Permite que el ancho se ajuste al contenido */
+        max-width: none; /* Sin límite de ancho */
+        margin: 0; /* Elimina los márgenes automáticos */
     }
     .donate-corner-button {
-        width: 100%; /* El botón principal ocupa todo el ancho disponible */
-        justify-content: center; /* Centrar su contenido */
+        width: auto; /* Permite que el botón se ajuste al contenido */
+        padding: 6px 10px; /* Un poco más pequeño */
+        font-size: 0.8em; /* Fuente más pequeña */
+        justify-content: flex-start; /* Alinea a la izquierda si el ancho es automático */
     }
     .dropdown-content {
-        position: static; /* El menú también se comporta como bloque normal */
-        width: 100%; /* Ocupa todo el ancho disponible */
-        right: auto; /* Desactiva la alineación a la derecha */
-        margin-top: 10px; /* Un poco más de espacio */
-        text-align: left; /* Deja el texto alineado a la izquierda para mejor lectura */
+        right: 0; /* Asegura que el menú desplegable se alinee a la derecha del botón */
+        left: auto;
     }
-    .donation-option.astropay-option {
-        text-align: center; /* Centrar el contenido de la opción AstroPay en móvil */
-    }
+    /* Puede que tengas que ajustar el z-index de otros elementos si hay superposiciones */
 }
