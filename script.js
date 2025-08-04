@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- NUEVO CÓDIGO PARA EL MENÚ DE DONACIÓN ---
+    // --- CÓDIGO PARA EL MENÚ DE DONACIÓN ---
     const donateButton = document.getElementById('donate-button');
     const donateOptions = document.getElementById('donate-options');
     const astropayCvu = document.getElementById('astropay-cvu');
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para mostrar/ocultar el menú
     donateButton.addEventListener('click', function(event) {
         donateOptions.classList.toggle('show');
-        event.stopPropagation(); // Evita que el clic se propague al documento
+        event.stopPropagation();
     });
 
     // Cierra el menú si se hace clic fuera de él
@@ -50,18 +50,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Funcionalidad de copiar CVU
     if (copyCvuButton) {
         copyCvuButton.addEventListener('click', function() {
-            const textToCopy = astropayCvu.textContent; // Obtener el texto del CVU
+            const textToCopy = astropayCvu.textContent;
             navigator.clipboard.writeText(textToCopy)
                 .then(() => {
                     astropayCopyMessage.textContent = '¡Copiado!';
-                    astropayCopyMessage.style.color = '#28a745'; // Color verde
+                    astropayCopyMessage.style.color = '#28a745';
                     setTimeout(() => {
-                        astropayCopyMessage.textContent = ''; // Limpiar mensaje después de un tiempo
+                        astropayCopyMessage.textContent = '';
                     }, 2000);
                 })
                 .catch(err => {
                     astropayCopyMessage.textContent = 'Error al copiar.';
-                    astropayCopyMessage.style.color = '#dc3545'; // Color rojo
+                    astropayCopyMessage.style.color = '#dc3545';
                     console.error('Error al copiar CVU:', err);
                     setTimeout(() => {
                         astropayCopyMessage.textContent = '';
