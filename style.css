@@ -1,333 +1,62 @@
-:root {
-    /* Variables para tema oscuro (por defecto) */
-    --bg-gradient-start: #6dd5ed;
-    --bg-gradient-end: #2193b0;
-    --container-bg: rgba(0, 0, 0, 0.5);
-    --text-color: #fff;
-    --secondary-text-color: #f0f0f0;
-    --button-bg: rgba(255, 255, 255, 0.1);
-    --button-border: rgba(255, 255, 255, 0.2);
-    --button-hover-bg: rgba(255, 255, 255, 0.25);
-    --footer-color: rgba(255, 255, 255, 0.7);
-    --profile-pic-border: #fff;
-    --profile-pic-shadow: rgba(0, 0, 0, 0.3);
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-2025">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Conéctate conmigo! - Tus Redes y Streaming</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="tu_foto_de_perfil.jpg" alt="Tu Foto de Perfil" class="profile-pic">
+            <h1>¡Hola! Soy BRAVOXV</h1>
+            <p>¡Bienvenido/a! Aquí encontrarás todos mis enlaces a redes sociales y canales de streaming.</p>
+            <button id="theme-toggle" class="theme-button">Cambiar a Tema Claro</button>
+        </header>
 
-body.light-theme {
-    /* Variables para tema claro */
-    --bg-gradient-start: #f8f9fa; /* Blanco grisáceo */
-    --bg-gradient-end: #e2e3e5;   /* Gris claro */
-    --container-bg: rgba(255, 255, 255, 0.9);
-    --text-color: #333;
-    --secondary-text-color: #555;
-    --button-bg: rgba(0, 0, 0, 0.1);
-    --button-border: rgba(0, 0, 0, 0.2);
-    --button-hover-bg: rgba(0, 0, 0, 0.15);
-    --footer-color: rgba(0, 0, 0, 0.7);
-    --profile-pic-border: #333;
-    --profile-pic-shadow: rgba(0, 0, 0, 0.15);
-}
+        <div class="donate-dropdown">
+            <button id="donate-button" class="donate-corner-button">
+                Donar <span class="arrow-down">▼</span>
+            </button>
+            <div class="dropdown-content" id="donate-options">
+                <div class="donation-option astropay-option">
+                    <p>Copia mi CVU de AstroPay:</p>
+                    <span class="cvu-text" id="astropay-cvu">0000177500000007475928</span> 
+                    <button class="copy-cvu-button" data-clipboard-target="#astropay-cvu">Copiar CVU</button>
+                    <span class="copy-message" id="astropay-copy-message"></span>
+                </div>
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    box-sizing: border-box;
-    transition: background 0.5s ease, color 0.5s ease;
-}
+                <a href="https://link.mercadopago.com.ar/bravoxv" target="_blank" class="donation-option mercadopago-option">
+                    Donar con Mercado Pago
+                </a>
+            </div>
+        </div>
 
-.container {
-    background-color: var(--container-bg);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    max-width: 500px;
-    width: 100%;
-    transition: background-color 0.5s ease, box-shadow 0.5s ease;
-    position: relative; /* Importante para el posicionamiento del dropdown */
-}
+        <main class="links-section">
+            <a href="https://www.youtube.com/@Bravo-XV" target="_blank" class="link-button youtube">
+                <span>YouTube</span>
+            </a>
+            <a href="https://kick.com/bravoxv" target="_blank" class="link-button kick">
+                Kick
+            </a>
+            <a href="https://www.instagram.com/bravoxv2025/" target="_blank" class="link-button instagram">
+                Instagram
+            </a>
+            <a href="https://www.tiktok.com/@elbravoxv" target="_blank" class="link-button tiktok">
+                TikTok
+            </a>
+            <a href="https://discord.gg/NDJxRGQAaF" target="_blank" class="link-button discord">
+                Discord
+            </a>
+        </main>
 
-header {
-    margin-bottom: 30px;
-}
+        <footer>
+            <p>© 2025 bravoxv. Todos los derechos reservados.</p>
+        </footer>
+    </div>
 
-.profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--profile-pic-border);
-    box-shadow: 0 0 15px var(--profile-pic-shadow);
-    margin-bottom: 20px;
-    transition: border-color 0.5s ease, box-shadow 0.5s ease;
-}
-
-h1 {
-    font-size: 2.2em;
-    margin-bottom: 10px;
-    color: var(--text-color);
-    transition: color 0.5s ease;
-}
-
-p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: var(--secondary-text-color);
-    transition: color 0.5s ease;
-}
-
-/* Botón de cambio de tema */
-.theme-button {
-    background-color: var(--button-bg);
-    color: var(--text-color);
-    border: 1px solid var(--button-border);
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    margin-top: 15px;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-.theme-button:hover {
-    background-color: var(--button-hover-bg);
-}
-
-.links-section {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
-    align-items: center; /* Centra los elementos hijos horizontalmente */
-}
-
-/* Contenedor del desplegable de donación */
-.donate-dropdown {
-    position: absolute; /* Posicionamiento absoluto respecto al .container */
-    top: 20px;
-    right: 20px;
-    z-index: 10; /* Asegura que esté por encima de otros elementos */
-}
-
-/* Estilos del botón principal "Donar" */
-.donate-corner-button {
-    background-color: #009EE3; /* Color de Mercado Pago */
-    color: #fff;
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 8px;
-    font-size: 0.9em;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    border: none; /* Eliminar el borde del botón */
-    cursor: pointer; /* Indicar que es clickeable */
-    display: flex; /* Para alinear el texto y la flecha */
-    align-items: center;
-    gap: 5px;
-}
-
-.donate-corner-button:hover {
-    background-color: #0077B6;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.donate-corner-button .arrow-down {
-    font-size: 0.7em; /* Tamaño de la flecha */
-    margin-left: 5px;
-}
-
-/* Contenido del menú desplegable */
-.dropdown-content {
-    display: none; /* Oculto por defecto */
-    position: absolute;
-    background-color: var(--container-bg); /* Fondo del contenedor */
-    min-width: 250px; /* Ancho mínimo para el menú */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 8px;
-    right: 0; /* Alineado a la derecha del botón */
-    margin-top: 5px; /* Espacio entre el botón y el menú */
-    padding: 10px;
-    border: 1px solid var(--button-border);
-}
-
-.dropdown-content.show {
-    display: block; /* Mostrar cuando se añada la clase 'show' con JS */
-}
-
-/* Opciones individuales dentro del menú */
-.donation-option {
-    padding: 10px;
-    text-decoration: none;
-    display: block;
-    color: var(--text-color);
-    background-color: var(--button-bg);
-    border-radius: 5px;
-    margin-bottom: 8px; /* Espacio entre opciones */
-    text-align: center;
-    font-size: 0.9em;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-    border: 1px solid var(--button-border);
-    cursor: pointer;
-}
-
-.donation-option:last-child {
-    margin-bottom: 0; /* Eliminar margen del último elemento */
-}
-
-.donation-option:hover {
-    background-color: var(--button-hover-bg);
-}
-
-/* Estilos específicos para la opción AstroPay */
-.donation-option.astropay-option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    padding: 15px 10px; /* Más padding para contenido interno */
-}
-.astropay-option p {
-    margin: 0;
-    font-size: 0.85em;
-    color: var(--secondary-text-color);
-}
-.astropay-option .cvu-text {
-    font-weight: bold;
-    font-size: 1.1em;
-    color: var(--text-color);
-    background-color: rgba(0,0,0,0.1); /* Ligero fondo para el CVU */
-    padding: 5px 10px;
-    border-radius: 5px;
-    user-select: all; /* Permite seleccionar el texto fácilmente */
-}
-.astropay-option .copy-cvu-button {
-    background-color: #3498db; /* Azul para copiar */
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.8em;
-    margin-top: 5px;
-    transition: background-color 0.2s ease;
-}
-.astropay-option .copy-cvu-button:hover {
-    background-color: #2980b9;
-}
-.copy-message {
-    font-size: 0.75em;
-    color: #28a745; /* Verde para mensaje de éxito */
-    margin-top: 5px;
-    height: 1em; /* Para evitar que el texto salte */
-}
-
-/* Estilos específicos para la opción Mercado Pago */
-.donation-option.mercadopago-option {
-    background-color: #009EE3; /* Azul de Mercado Pago */
-    color: #fff;
-    padding: 12px 10px;
-}
-.donation-option.mercadopago-option:hover {
-    background-color: #0077B6;
-}
-
-
-/* Estilos para otros botones de enlaces (ya existentes) */
-.link-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--button-bg);
-    color: var(--text-color);
-    text-decoration: none;
-    padding: 15px 25px;
-    border-radius: 10px;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
-    border: 1px solid var(--button-border);
-    width: 100%;
-    max-width: 450px;
-    margin: 0 auto;
-}
-
-.link-button:hover {
-    background-color: var(--button-hover-bg);
-    transform: translateY(-3px);
-}
-
-/* Colores específicos para botones de redes sociales */
-.link-button.youtube { background-color: #FF0000; padding: 10px 25px; }
-.link-button.youtube:hover { background-color: #cc0000; }
-.link-button.youtube span { display: block; width: 100%; text-align: center; }
-.link-button.youtube span:first-child { font-size: 1.2em; font-weight: bold; margin-bottom: 5px; }
-.link-button.youtube .youtube-sub-text { font-size: 0.9em; font-weight: normal; opacity: 0.9; }
-
-.link-button.kick { background-color: #53F62D; }
-.link-button.kick:hover { background-color: #42c024; }
-
-.link-button.instagram { background-image: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045); color: #fff; border: none; }
-.link-button.instagram:hover { background-image: linear-gradient(to right, #6d2c94, #c91111, #e69d3e); }
-
-.link-button.tiktok { background-color: #000000; }
-.link-button.tiktok:hover { background-color: #333333; }
-
-.link-button.discord { background-color: #5865F2; }
-.link-button.discord:hover { background-color: #4856e3; }
-
-
-footer {
-    font-size: 0.9em;
-    color: var(--footer-color);
-    transition: color 0.5s ease;
-}
-
-/* Media Queries para pantallas más pequeñas */
-@media (max-width: 600px) {
-    body { padding: 15px; }
-    .container { padding: 20px; }
-    h1 { font-size: 1.8em; }
-    p { font-size: 1em; }
-    .link-button { padding: 12px 20px; font-size: 1em; margin: 0; }
-    .link-button.youtube { padding: 8px 20px; }
-    .link-button.youtube span:first-child { font-size: 1.1em; }
-    .link-button.youtube .youtube-sub-text { font-size: 0.8em; }
-
-    /* Ajuste para el botón de donación en la esquina para pantallas pequeñas */
-    .donate-dropdown {
-        position: static; /* Vuelve a posicionamiento normal en pantallas pequeñas */
-        margin-top: 15px;
-        display: block;
-        width: 100%;
-        max-width: 300px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center; /* Centrar el botón principal */
-    }
-    .donate-corner-button {
-        width: 100%; /* El botón principal ocupa todo el ancho disponible */
-        justify-content: center; /* Centrar su contenido */
-    }
-    .dropdown-content {
-        position: static; /* El menú también se comporta como bloque normal */
-        width: 100%; /* Ocupa todo el ancho disponible */
-        right: auto; /* Desactiva la alineación a la derecha */
-        margin-top: 10px; /* Un poco más de espacio */
-        text-align: left; /* Deja el texto alineado a la izquierda para mejor lectura */
-    }
-    .donation-option.astropay-option {
-        text-align: center; /* Centrar el contenido de la opción AstroPay en móvil */
-    }
-}
+    <script src="script.js"></script>
+</body>
+</html>
