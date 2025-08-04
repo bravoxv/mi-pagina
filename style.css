@@ -1,62 +1,336 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-2025">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Conéctate conmigo! - Tus Redes y Streaming</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <img src="tu_foto_de_perfil.jpg" alt="Tu Foto de Perfil" class="profile-pic">
-            <h1>¡Hola! Soy BRAVOXV</h1>
-            <p>¡Bienvenido/a! Aquí encontrarás todos mis enlaces a redes sociales y canales de streaming.</p>
-            <button id="theme-toggle" class="theme-button">Cambiar a Tema Claro</button>
-        </header>
+/* ======================== */
+/* VARIABLES CSS Y ESTILOS BASE */
+/* ======================== */
 
-        <div class="donate-dropdown">
-            <button id="donate-button" class="donate-corner-button">
-                Donar <span class="arrow-down">▼</span>
-            </button>
-            <div class="dropdown-content" id="donate-options">
-                <div class="donation-option astropay-option">
-                    <p>Copia mi CVU de AstroPay:</p>
-                    <span class="cvu-text" id="astropay-cvu">0000177500000007475928</span> 
-                    <button class="copy-cvu-button" data-clipboard-target="#astropay-cvu">Copiar CVU</button>
-                    <span class="copy-message" id="astropay-copy-message"></span>
-                </div>
+:root {
+    --color-fondo-oscuro: #121212;
+    --color-card-oscuro: #1e1e1e;
+    --color-texto-oscuro: #ffffff;
+    --color-contraste-oscuro: #bb86fc; /* Color morado para el tema oscuro */
 
-                <a href="https://link.mercadopago.com.ar/bravoxv" target="_blank" class="donation-option mercadopago-option">
-                    Donar con Mercado Pago
-                </a>
-            </div>
-        </div>
+    --color-fondo-claro: #f0f2f5;
+    --color-card-claro: #ffffff;
+    --color-texto-claro: #333333;
+    --color-contraste-claro: #007bff; /* Color azul para el tema claro */
+}
 
-        <main class="links-section">
-            <a href="https://www.youtube.com/@Bravo-XV" target="_blank" class="link-button youtube">
-                <span>YouTube</span>
-            </a>
-            <a href="https://kick.com/bravoxv" target="_blank" class="link-button kick">
-                Kick
-            </a>
-            <a href="https://www.instagram.com/bravoxv2025/" target="_blank" class="link-button instagram">
-                Instagram
-            </a>
-            <a href="https://www.tiktok.com/@elbravoxv" target="_blank" class="link-button tiktok">
-                TikTok
-            </a>
-            <a href="https://discord.gg/NDJxRGQAaF" target="_blank" class="link-button discord">
-                Discord
-            </a>
-        </main>
+/* Transición suave para todos los elementos */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
 
-        <footer>
-            <p>© 2025 bravoxv. Todos los derechos reservados.</p>
-        </footer>
-    </div>
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-oscuro);
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+body.light-theme {
+    background-color: var(--color-fondo-claro);
+    color: var(--color-texto-claro);
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* ======================== */
+/* HEADER Y FOTO DE PERFIL */
+/* ======================== */
+
+header {
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--color-contraste-oscuro);
+    margin-bottom: 10px;
+}
+
+body.light-theme .profile-pic {
+    border-color: var(--color-contraste-claro);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 10px 0;
+}
+
+header p {
+    font-size: 1em;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+}
+
+body.light-theme header p {
+    color: #666;
+}
+
+/* ======================== */
+/* BOTONES Y ENLACES (LINKS) */
+/* ======================== */
+
+.links-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.link-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-card-oscuro);
+    color: var(--color-texto-oscuro);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; /* Para posibles íconos */
+    border: 1px solid var(--color-card-oscuro);
+}
+
+body.light-theme .link-button {
+    background-color: var(--color-card-claro);
+    color: var(--color-texto-claro);
+    border: 1px solid #ddd;
+}
+
+.link-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.link-button.youtube {
+    background: #ff0000;
+    color: #ffffff;
+}
+.link-button.kick {
+    background: #50e417;
+    color: #000000;
+}
+.link-button.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: #ffffff;
+}
+.link-button.tiktok {
+    background: #000000;
+    color: #ffffff;
+}
+.link-button.discord {
+    background: #5865f2;
+    color: #ffffff;
+}
+
+/* ======================== */
+/* BOTÓN DE CAMBIO DE TEMA */
+/* ======================== */
+
+.theme-button {
+    background-color: var(--color-contraste-oscuro);
+    color: var(--color-texto-oscuro);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: background-color 0.2s;
+}
+
+body.light-theme .theme-button {
+    background-color: var(--color-contraste-claro);
+    color: var(--color-texto-claro);
+}
+
+.theme-button:hover {
+    opacity: 0.8;
+}
+
+/* ======================== */
+/* MENÚ DE DONACIÓN (DROPDOWN) */
+/* ======================== */
+
+.donate-dropdown {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.donate-corner-button {
+    background-color: var(--color-contraste-oscuro);
+    color: var(--color-texto-oscuro);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+body.light-theme .donate-corner-button {
+    background-color: var(--color-contraste-claro);
+    color: var(--color-texto-claro);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 250px;
+    background-color: var(--color-card-oscuro);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    text-align: left;
+}
+
+body.light-theme .dropdown-content {
+    background-color: var(--color-card-claro);
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.donation-option {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: var(--color-texto-oscuro);
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+body.light-theme .donation-option {
+    color: var(--color-texto-claro);
+}
+
+.donation-option:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .donation-option:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.astropay-option {
+    background-color: #2e3034;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+body.light-theme .astropay-option {
+    background-color: #f8f9fa;
+}
+
+.astropay-option p {
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+    color: #b0b0b0;
+}
+
+body.light-theme .astropay-option p {
+    color: #6c757d;
+}
+
+.cvu-text {
+    font-family: monospace;
+    font-size: 1em;
+    font-weight: bold;
+    display: block;
+    word-break: break-all;
+    margin-bottom: 10px;
+}
+
+.copy-cvu-button {
+    background-color: var(--color-contraste-oscuro);
+    color: var(--color-texto-oscuro);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+body.light-theme .copy-cvu-button {
+    background-color: var(--color-contraste-claro);
+    color: var(--color-texto-claro);
+}
+
+.copy-cvu-button:hover {
+    opacity: 0.8;
+}
+
+.copy-message {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Estilos específicos para el enlace de Mercado Pago */
+.mercadopago-option {
+    background-color: #009ee3;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.mercadopago-option:hover {
+    background-color: #0077b6;
+}
+
+/* ======================== */
+/* FOOTER */
+/* ======================== */
+
+footer {
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 20px;
+}
+
+/* ======================== */
+/* RESPONSIVE DESIGN */
+/* ======================== */
+
+@media (max-width: 600px) {
+    .donate-dropdown {
+        top: 10px;
+        right: 10px;
+    }
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    .link-button {
+        padding: 12px;
+    }
+}
