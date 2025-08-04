@@ -9,7 +9,6 @@
     margin-bottom: 30px;
 }
 
-/* Estilo general para todos los botones, sin color de fondo */
 .link-button {
     display: block;
     width: 100%;
@@ -18,28 +17,26 @@
     font-weight: bold;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-card-oscuro);
     color: var(--color-texto-oscuro);
     transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
-    border: 1px solid transparent; /* Bordes transparentes por defecto */
+    border: 1px solid var(--color-card-oscuro);
 }
 
-/* Estilo de fondo para el tema oscuro (aplicado por defecto si no es una red social) */
-.link-button:not(.youtube):not(.kick):not(.instagram):not(.tiktok):not(.discord) {
-    background-color: var(--color-card-oscuro);
-    border-color: var(--color-card-oscuro);
-    color: var(--color-texto-oscuro);
-}
-
-/* Estilo de fondo para el tema claro (aplicado solo si no es una red social) */
+/* Esta es la regla corregida. Ahora solo aplica a los botones que no tienen un color específico de red social. */
 body.light-theme .link-button:not(.youtube):not(.kick):not(.instagram):not(.tiktok):not(.discord) {
     background-color: var(--color-card-claro);
     color: var(--color-texto-claro);
-    border-color: #ddd;
+    border: 1px solid #ddd;
 }
 
+.link-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
 
-/* Estilos de color específicos para los enlaces de redes sociales (siempre se aplican) */
+/* Estilos de color específicos para los enlaces de redes sociales */
 .link-button.youtube {
     background: #ff0000;
     color: #ffffff;
@@ -59,9 +56,4 @@ body.light-theme .link-button:not(.youtube):not(.kick):not(.instagram):not(.tikt
 .link-button.discord {
     background: #5865f2;
     color: #ffffff;
-}
-
-.link-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
