@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
             commentsSection.classList.toggle('show');
         });
     }
-
+    
     // --- Lógica del menú de donación ---
-    const donateButton = document.getElementById('donate-button-mobile');
-    const donateOptions = document.getElementById('donate-dropdown-mobile');
+    const donateButton = document.getElementById('donate-button');
+    const donateOptions = document.getElementById('donate-options');
     const astropayCvu = document.getElementById('astropay-cvu');
     const copyCvuButton = document.querySelector('.copy-cvu-button');
     const astropayCopyMessage = document.getElementById('astropay-copy-message');
