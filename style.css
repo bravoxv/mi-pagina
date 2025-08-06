@@ -374,63 +374,23 @@ footer {
 }
 
 /* ======================== */
-/* RESPONSIVE DESIGN (MÓVILES) */
+/* RESPONSIVE DESIGN */
 /* ======================== */
 
 @media (max-width: 900px) {
     .comment-toggle-button, .donate-dropdown {
         display: none;
     }
-    
-    .container {
-        margin: 0 auto;
+}
+@media (max-width: 600px) {
+    .profile-pic {
+        width: 120px;
+        height: 120px;
     }
-    
-    /* Botones flotantes para móviles */
-    .comment-button-mobile, .donate-button-mobile {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        background-color: var(--color-contraste-oscuro);
-        color: var(--color-texto-oscuro);
-        border: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    h1 {
+        font-size: 2em;
     }
-    
-    body.light-theme .comment-button-mobile, body.light-theme .donate-button-mobile {
-        background-color: var(--color-contraste-claro);
-        color: var(--color-texto-claro);
-    }
-
-    .comment-button-mobile {
-        left: 20px;
-    }
-
-    /* Menú de donaciones para móviles */
-    .donate-dropdown-mobile {
-        display: none;
-        position: fixed;
-        bottom: 60px;
-        right: 20px;
-        min-width: 250px;
-        background-color: var(--color-card-oscuro);
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        padding: 15px;
-        text-align: left;
-        z-index: 1000;
-    }
-    
-    body.light-theme .donate-dropdown-mobile {
-        background-color: var(--color-card-claro);
-    }
-
-    .donate-dropdown-mobile.show {
-        display: block;
+    .link-button {
+        padding: 12px;
     }
 }
