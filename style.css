@@ -217,7 +217,7 @@ body.light-theme .comment-toggle-button {
 .comments-section {
     width: 400px;
     position: fixed;
-    top: 70px; /* Ajuste para que se deslice justo debajo del botón */
+    top: 70px;
     left: -440px; /* Oculto por defecto */
     background-color: #8B4513; /* Fondo marrón */
     padding: 20px;
@@ -395,12 +395,84 @@ footer {
 }
 
 /* ======================== */
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN (MÓVILES) */
 /* ======================== */
 
 @media (max-width: 900px) {
-    .top-bar-buttons, .comments-section {
+    /* Ocultamos los botones de la barra superior */
+    .top-bar-buttons {
         display: none;
+    }
+
+    /* Posicionamos botones flotantes para móviles en la parte inferior */
+    body {
+        padding-bottom: 80px; /* Añade espacio para los botones flotantes */
+    }
+
+    .comment-container, .donate-dropdown-container {
+        position: fixed;
+        bottom: 20px;
+        z-index: 1000;
+        top: auto; /* Anula el `top` del estilo de escritorio */
+    }
+
+    .comment-container {
+        left: 20px;
+        right: auto;
+    }
+
+    .donate-dropdown-container {
+        right: 20px;
+        left: auto;
+    }
+    
+    .comment-toggle-button, .donate-corner-button {
+        /* Estilos para los botones flotantes */
+        background-color: var(--color-contraste-oscuro);
+        color: var(--color-texto-oscuro);
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    body.light-theme .comment-toggle-button, body.light-theme .donate-corner-button {
+        background-color: var(--color-contraste-claro);
+        color: var(--color-texto-claro);
+    }
+
+    .comments-section {
+        position: fixed;
+        width: 100%;
+        height: auto;
+        left: 0;
+        bottom: -100vh; /* Oculto por defecto en la parte inferior */
+        top: auto;
+        border-radius: 10px 10px 0 0;
+        transition: bottom 0.5s ease-in-out;
+        z-index: 999;
+    }
+
+    .comments-section.show {
+        bottom: 0; /* Visible en la parte inferior */
+    }
+
+    .dropdown-content {
+        position: fixed;
+        width: 100%;
+        bottom: -100vh;
+        left: 0;
+        top: auto;
+        right: auto;
+        border-radius: 10px 10px 0 0;
+        transition: bottom 0.5s ease-in-out;
+        z-index: 999;
+    }
+    
+    .dropdown-content.show {
+        bottom: 0;
     }
 }
 @media (max-width: 600px) {
