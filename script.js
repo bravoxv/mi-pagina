@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             commentsSection.classList.toggle('show');
         });
     }
-    
+
     // --- Lógica del menú de donación ---
     const donateButton = document.getElementById('donate-button');
     const donateOptions = document.getElementById('donate-options');
