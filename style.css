@@ -98,17 +98,22 @@ body.light-theme header p {
     font-weight: bold;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: var(--color-card-oscuro);
-    color: var(--color-texto-oscuro);
     transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
-    border: 1px solid var(--color-card-oscuro);
+    border: 1px solid transparent;
 }
 
-body.light-theme .link-button {
+/* Colores de fondo y texto por defecto (tema oscuro) para botones genéricos */
+.link-button:not(.twitch):not(.youtube):not(.kick):not(.instagram):not(.tiktok):not(.discord) {
+    background-color: var(--color-card-oscuro);
+    color: var(--color-texto-oscuro);
+}
+
+/* Colores de fondo y texto para botones genéricos en tema claro */
+body.light-theme .link-button:not(.twitch):not(.youtube):not(.kick):not(.instagram):not(.tiktok):not(.discord) {
     background-color: var(--color-card-claro);
     color: var(--color-texto-claro);
-    border: 1px solid #ddd;
+    border-color: #ddd;
 }
 
 .link-button:hover {
@@ -116,7 +121,7 @@ body.light-theme .link-button {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos de color específicos para los enlaces de redes sociales */
+/* Estilos de color específicos para los enlaces de redes sociales (siempre se aplican) */
 .link-button.twitch {
     background: #6441a5;
     color: #ffffff;
@@ -319,22 +324,72 @@ footer {
 }
 
 /* ======================== */
-/* RESPONSIVE DESIGN */
+/* BOTÓN DE COMENTARIOS Y SECCIÓN */
 /* ======================== */
 
-@media (max-width: 600px) {
-    .donate-dropdown {
-        top: 10px;
-        right: 10px;
+.comment-button-container {
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.comment-toggle-button {
+    background-color: var(--color-contraste-oscuro);
+    color: var(--color-texto-oscuro);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+body.light-theme .comment-toggle-button {
+    background-color: var(--color-contraste-claro);
+    color: var(--color-texto-claro);
+}
+
+.comment-toggle-button:hover {
+    transform: scale(1.05);
+}
+
+.comments-section {
+    width: 300px;
+    position: fixed;
+    top: 100px;
+    left: -320px; /* Posición inicial: oculto fuera de la pantalla */
+    background-color: var(--color-card-oscuro);
+    padding: 20px;
+    border-radius: 0 10px 10px 0; /* Bordes redondeados solo a la derecha */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 998; /* Un poco menos que el botón para que esté detrás */
+    transition: left 0.5s ease-in-out; /* Animación de entrada/salida */
+}
+
+body.light-theme .comments-section {
+    background-color: var(--color-card-claro);
+}
+
+.comments-section.show {
+    left: 0; /* Posición final: visible en la pantalla */
+}
+
+.comments-section h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+/* Ocultar en pantallas pequeñas para evitar solapamiento */
+@media (max-width: 900px) {
+    .comment-button-container {
+        display: none;
     }
-    .profile-pic {
-        width: 120px;
-        height: 120px;
+    .comments-section {
+        display: none;
     }
-    h1 {
-        font-size: 2em;
-    }
-    .link-button {
-        padding: 12px;
+    .container {
+        margin-left: auto; /* Restablecer el margen para centrar el contenido */
     }
 }
