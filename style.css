@@ -219,7 +219,7 @@ body.light-theme .comment-toggle-button {
     position: fixed;
     top: 70px;
     left: -440px; /* Oculto por defecto */
-    background-color: #8B4513; /* Fondo marrón */
+    background-color: var(--color-card-oscuro); /* Cambiado a la variable del modo oscuro */
     padding: 20px;
     border-radius: 0 10px 10px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -228,7 +228,7 @@ body.light-theme .comment-toggle-button {
 }
 
 body.light-theme .comments-section {
-    background-color: #A0522D; /* Tono de marrón más claro para el tema claro */
+    background-color: var(--color-card-claro); /* Se mantiene el color claro del tema */
 }
 
 .comments-section.show {
@@ -399,21 +399,19 @@ footer {
 /* ======================== */
 
 @media (max-width: 900px) {
-    /* Ocultamos los botones de la barra superior */
     .top-bar-buttons {
         display: none;
     }
 
-    /* Posicionamos botones flotantes para móviles en la parte inferior */
     body {
-        padding-bottom: 80px; /* Añade espacio para los botones flotantes */
+        padding-bottom: 80px;
     }
 
     .comment-container, .donate-dropdown-container {
         position: fixed;
         bottom: 20px;
         z-index: 1000;
-        top: auto; /* Anula el `top` del estilo de escritorio */
+        top: auto;
     }
 
     .comment-container {
@@ -427,7 +425,6 @@ footer {
     }
     
     .comment-toggle-button, .donate-corner-button {
-        /* Estilos para los botones flotantes */
         background-color: var(--color-contraste-oscuro);
         color: var(--color-texto-oscuro);
         border: none;
@@ -448,22 +445,26 @@ footer {
         width: 100%;
         height: auto;
         left: 0;
-        bottom: -100vh; /* Oculto por defecto en la parte inferior */
+        bottom: -100vh;
         top: auto;
+        background-color: var(--color-card-oscuro); /* Color para el tema oscuro en móvil */
         border-radius: 10px 10px 0 0;
         transition: bottom 0.5s ease-in-out;
         z-index: 999;
     }
 
     .comments-section.show {
-        bottom: 0; /* Visible en la parte inferior */
+        bottom: 0;
     }
 
+    .donate-dropdown {
+        position: relative;
+    }
     .dropdown-content {
         position: fixed;
         width: 100%;
-        bottom: -100vh;
         left: 0;
+        bottom: -100vh;
         top: auto;
         right: auto;
         border-radius: 10px 10px 0 0;
