@@ -6,12 +6,11 @@
     --color-fondo-oscuro: #121212;
     --color-card-oscuro: #1e1e1e;
     --color-texto-oscuro: #ffffff;
-    --color-contraste-oscuro: #bb86fc; /* Color morado para el tema oscuro */
-
+    --color-contraste-oscuro: #bb86fc;
     --color-fondo-claro: #f0f2f5;
     --color-card-claro: #ffffff;
     --color-texto-claro: #333333;
-    --color-contraste-claro: #007bff; /* Color azul para el tema claro */
+    --color-contraste-claro: #007bff;
 }
 
 /* Transición suave para todos los elementos */
@@ -91,7 +90,6 @@ body.light-theme header p {
     margin-bottom: 30px;
 }
 
-/* Estilo general para todos los botones */
 .link-button {
     display: block;
     width: 100%;
@@ -100,22 +98,17 @@ body.light-theme header p {
     font-weight: bold;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
-    border: 1px solid transparent;
-}
-
-/* Colores de fondo y texto por defecto (tema oscuro) para botones genéricos */
-.link-button:not(.youtube):not(.kick):not(.instagram):not(.tiktok):not(.discord) {
     background-color: var(--color-card-oscuro);
     color: var(--color-texto-oscuro);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    border: 1px solid var(--color-card-oscuro);
 }
 
-/* Colores de fondo y texto para botones genéricos en tema claro */
-body.light-theme .link-button:not(.youtube):not(.kick):not(.instagram):not(.tiktok):not(.discord) {
+body.light-theme .link-button {
     background-color: var(--color-card-claro);
     color: var(--color-texto-claro);
-    border-color: #ddd;
+    border: 1px solid #ddd;
 }
 
 .link-button:hover {
@@ -123,7 +116,11 @@ body.light-theme .link-button:not(.youtube):not(.kick):not(.instagram):not(.tikt
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos de color específicos para los enlaces de redes sociales (siempre se aplican) */
+/* Estilos de color específicos para los enlaces de redes sociales */
+.link-button.twitch {
+    background: #6441a5;
+    color: #ffffff;
+}
 .link-button.youtube {
     background: #ff0000;
     color: #ffffff;
