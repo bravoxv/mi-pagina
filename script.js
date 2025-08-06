@@ -54,25 +54,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- CÓDIGO PARA EL MENÚ DE DONACIÓN ---
-    const donateButton = document.getElementById('donate-button');
-    const donateOptions = document.getElementById('donate-options');
+    // --- Lógica del menú de donación ---
+    const donateButton = document.getElementById('donate-button-mobile');
+    const donateOptions = document.getElementById('donate-dropdown-mobile');
     const astropayCvu = document.getElementById('astropay-cvu');
     const copyCvuButton = document.querySelector('.copy-cvu-button');
     const astropayCopyMessage = document.getElementById('astropay-copy-message');
 
-    donateButton.addEventListener('click', function(event) {
-        donateOptions.classList.toggle('show');
-        event.stopPropagation();
-    });
+    if (donateButton && donateOptions) {
+        donateButton.addEventListener('click', function(event) {
+            donateOptions.classList.toggle('show');
+            event.stopPropagation();
+        });
 
-    document.addEventListener('click', function(event) {
-        if (!donateButton.contains(event.target) && !donateOptions.contains(event.target)) {
-            if (donateOptions.classList.contains('show')) {
-                donateOptions.classList.remove('show');
+        document.addEventListener('click', function(event) {
+            if (!donateButton.contains(event.target) && !donateOptions.contains(event.target)) {
+                if (donateOptions.classList.contains('show')) {
+                    donateOptions.classList.remove('show');
+                }
             }
-        }
-    });
+        });
+    }
 
     if (copyCvuButton) {
         copyCvuButton.addEventListener('click', function() {
