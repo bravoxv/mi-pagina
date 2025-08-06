@@ -13,7 +13,6 @@
     --color-contraste-claro: #007bff;
 }
 
-/* Transición suave para todos los elementos */
 * {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
@@ -41,8 +40,6 @@ body.light-theme {
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
-    /* Ajusta este margen para que el contenido principal no se solape con la barra de comentarios */
-    margin: 0 0 0 440px; 
 }
 
 /* ======================== */
@@ -172,18 +169,69 @@ body.light-theme .theme-button {
 }
 
 /* ======================== */
-/* BARRA LATERAL DERECHA (DONACIONES) */
+/* BOTÓN Y SECCIÓN DE COMENTARIOS (IZQUIERDA) */
 /* ======================== */
 
-.right-sidebar {
+.comment-toggle-button {
+    background-color: var(--color-contraste-oscuro);
+    color: var(--color-texto-oscuro);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.2s;
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    z-index: 1000;
+}
+
+body.light-theme .comment-toggle-button {
+    background-color: var(--color-contraste-claro);
+    color: var(--color-texto-claro);
+}
+
+.comment-toggle-button:hover {
+    transform: scale(1.05);
+}
+
+.comments-section {
+    width: 400px;
+    position: fixed;
+    top: 100px;
+    left: -440px; /* Oculto por defecto */
+    background-color: var(--color-card-oscuro);
+    padding: 20px;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 998;
+    transition: left 0.5s ease-in-out;
+}
+
+body.light-theme .comments-section {
+    background-color: var(--color-card-claro);
+}
+
+.comments-section.show {
+    left: 0; /* Visible */
+}
+
+.comments-section h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+/* ======================== */
+/* MENÚ DE DONACIÓN (DERECHA) */
+/* ======================== */
+
+.donate-dropdown {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1000;
-}
-
-.donate-dropdown {
-    position: relative; /* Ajustado a relative para el dropdown */
 }
 
 .donate-corner-button {
@@ -326,89 +374,63 @@ footer {
 }
 
 /* ======================== */
-/* BARRA LATERAL IZQUIERDA (COMENTARIOS) */
-/* ======================== */
-
-.left-sidebar {
-    position: fixed;
-    top: 100px;
-    left: 20px;
-    z-index: 1000;
-}
-
-.comment-toggle-button {
-    background-color: var(--color-contraste-oscuro);
-    color: var(--color-texto-oscuro);
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s, transform 0.2s;
-}
-
-body.light-theme .comment-toggle-button {
-    background-color: var(--color-contraste-claro);
-    color: var(--color-texto-claro);
-}
-
-.comment-toggle-button:hover {
-    transform: scale(1.05);
-}
-
-.comments-section {
-    width: 400px; /* Tamaño de la barra de comentarios */
-    position: fixed;
-    top: 100px;
-    left: -440px; /* Posición inicial: oculto fuera de la pantalla */
-    background-color: var(--color-card-oscuro);
-    padding: 20px;
-    border-radius: 0 10px 10px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 998;
-    transition: left 0.5s ease-in-out;
-}
-
-body.light-theme .comments-section {
-    background-color: var(--color-card-claro);
-}
-
-.comments-section.show {
-    left: 0; /* Posición final: visible */
-}
-
-.comments-section h2 {
-    margin-top: 0;
-    font-size: 1.5em;
-    margin-bottom: 15px;
-}
-
-/* ======================== */
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN (MÓVILES) */
 /* ======================== */
 
 @media (max-width: 900px) {
-    .left-sidebar, .right-sidebar {
+    .comment-toggle-button, .donate-dropdown {
         display: none;
     }
+    
     .container {
-        margin-left: auto; /* Restablecer el margen para centrar el contenido */
+        margin: 0 auto;
     }
-    .donate-dropdown {
-        position: static;
-        margin-top: 20px;
+    
+    /* Botones flotantes para móviles */
+    .comment-button-mobile, .donate-button-mobile {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        background-color: var(--color-contraste-oscuro);
+        color: var(--color-texto-oscuro);
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
-}
+    
+    body.light-theme .comment-button-mobile, body.light-theme .donate-button-mobile {
+        background-color: var(--color-contraste-claro);
+        color: var(--color-texto-claro);
+    }
 
-@media (max-width: 600px) {
-    .profile-pic {
-        width: 120px;
-        height: 120px;
+    .comment-button-mobile {
+        left: 20px;
     }
-    h1 {
-        font-size: 2em;
+
+    /* Menú de donaciones para móviles */
+    .donate-dropdown-mobile {
+        display: none;
+        position: fixed;
+        bottom: 60px;
+        right: 20px;
+        min-width: 250px;
+        background-color: var(--color-card-oscuro);
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        padding: 15px;
+        text-align: left;
+        z-index: 1000;
     }
-    .link-button {
-        padding: 12px;
+    
+    body.light-theme .donate-dropdown-mobile {
+        background-color: var(--color-card-claro);
+    }
+
+    .donate-dropdown-mobile.show {
+        display: block;
     }
 }
