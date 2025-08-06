@@ -199,9 +199,9 @@ body.light-theme .comment-toggle-button {
 .comments-section {
     width: 400px;
     position: fixed;
-    top: 150px; /* Ajuste para moverlo más abajo */
+    top: 150px; /* Ajustado para que el menú no se solape con el botón */
     left: -440px; /* Oculto por defecto */
-    background-color: #8B4513; /* Fondo marrón */
+    background-color: #8B4513; /* Color marrón para el fondo */
     padding: 20px;
     border-radius: 0 10px 10px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -210,7 +210,7 @@ body.light-theme .comment-toggle-button {
 }
 
 body.light-theme .comments-section {
-    background-color: #A0522D; /* Tono de marrón más claro para el tema claro */
+    background-color: #A0522D; /* Tono de marrón para el tema claro */
 }
 
 .comments-section.show {
