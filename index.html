@@ -8,6 +8,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="top-bar-buttons">
+        <div class="comment-container">
+            <button id="comment-button" class="comment-toggle-button">Comentar</button>
+            <div id="comments-section" class="comments-section">
+                <h2>Comentarios</h2>
+                <div class="utterances-container">
+                    <script src="https://utteranc.es/client.js"
+                            repo="bravoxv/mi-pagina"
+                            issue-term="pathname"
+                            crossorigin="anonymous"
+                            async>
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="donate-dropdown-container">
+            <div class="donate-dropdown">
+                <button id="donate-button" class="donate-corner-button">
+                    Donar <span class="arrow-down">▼</span>
+                </button>
+                <div class="dropdown-content" id="donate-options">
+                    <div class="donation-option astropay-option">
+                        <p>Copia mi CVU de AstroPay:</p>
+                        <span class="cvu-text" id="astropay-cvu">0000177500000007475928</span>
+                        <button class="copy-cvu-button">Copiar CVU</button>
+                        <span class="copy-message" id="astropay-copy-message"></span>
+                    </div>
+                    <a href="https://link.mercadopago.com.ar/bravoxv" target="_blank" class="donation-option mercadopago-option">
+                        Donar con Mercado Pago
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <header>
             <img src="tu_foto_de_perfil.jpg" alt="Tu Foto de Perfil" class="profile-pic">
@@ -30,40 +64,6 @@
         </footer>
     </div>
     
-    <div class="comment-container">
-        <button id="comment-button" class="comment-toggle-button">Comentar</button>
-        <div id="comments-section" class="comments-section">
-            <h2>Comentarios</h2>
-            <div class="utterances-container">
-                <script src="https://utteranc.es/client.js"
-                        repo="bravoxv/mi-pagina"
-                        issue-term="pathname"
-                        crossorigin="anonymous"
-                        async>
-                </script>
-            </div>
-        </div>
-    </div>
-    
-    <div class="donate-dropdown-container">
-        <div class="donate-dropdown">
-            <button id="donate-button" class="donate-corner-button">
-                Donar <span class="arrow-down">▼</span>
-            </button>
-            <div class="dropdown-content" id="donate-options">
-                <div class="donation-option astropay-option">
-                    <p>Copia mi CVU de AstroPay:</p>
-                    <span class="cvu-text" id="astropay-cvu">0000177500000007475928</span>
-                    <button class="copy-cvu-button">Copiar CVU</button>
-                    <span class="copy-message" id="astropay-copy-message"></span>
-                </div>
-                <a href="https://link.mercadopago.com.ar/bravoxv" target="_blank" class="donation-option mercadopago-option">
-                    Donar con Mercado Pago
-                </a>
-            </div>
-        </div>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>
