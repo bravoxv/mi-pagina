@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Cargar el tema guardado
+    // Tema guardado
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
         body.classList.add('light-theme');
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setUtterancesTheme('github-dark');
     }
 
-    // Toggle de tema
+    // Toggle tema
     themeToggle.addEventListener('click', function() {
         if (body.classList.contains('light-theme')) {
             body.classList.remove('light-theme');
@@ -44,17 +44,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- Lógica del botón de comentarios ---
+    // Botón comentarios
     const commentButton = document.getElementById('comment-button');
     const commentsSection = document.getElementById('comments-section');
-
     if (commentButton && commentsSection) {
         commentButton.addEventListener('click', function() {
             commentsSection.classList.toggle('show');
         });
     }
 
-    // --- Lógica del menú de donación ---
+    // Menú donaciones
     const donateButton = document.getElementById('donate-button');
     const donateOptions = document.getElementById('donate-options');
     const astropayCvu = document.getElementById('astropay-cvu');
@@ -66,35 +65,73 @@ document.addEventListener('DOMContentLoaded', function() {
             donateOptions.classList.toggle('show');
             event.stopPropagation();
         });
-
         document.addEventListener('click', function(event) {
             if (!donateButton.contains(event.target) && !donateOptions.contains(event.target)) {
-                if (donateOptions.classList.contains('show')) {
-                    donateOptions.classList.remove('show');
-                }
+                donateOptions.classList.remove('show');
             }
         });
     }
 
     if (copyCvuButton) {
         copyCvuButton.addEventListener('click', function() {
-            const textToCopy = astropayCvu.textContent;
-            navigator.clipboard.writeText(textToCopy)
+            navigator.clipboard.writeText(astropayCvu.textContent)
                 .then(() => {
                     astropayCopyMessage.textContent = '¡Copiado!';
                     astropayCopyMessage.style.color = '#28a745';
-                    setTimeout(() => {
-                        astropayCopyMessage.textContent = '';
-                    }, 2000);
+                    setTimeout(() => astropayCopyMessage.textContent = '', 2000);
                 })
                 .catch(err => {
                     astropayCopyMessage.textContent = 'Error al copiar.';
                     astropayCopyMessage.style.color = '#dc3545';
-                    console.error('Error al copiar CVU:', err);
-                    setTimeout(() => {
-                        astropayCopyMessage.textContent = '';
-                    }, 2000);
+                    setTimeout(() => astropayCopyMessage.textContent = '', 2000);
                 });
         });
     }
+
+    // 🎨 Galaxia 3D con estrellas parpadeantes
+    const canvas = document.getElementById('galaxy');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    let w, h;
+
+    function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    for (let i = 0; i < 500; i++) {
+        stars.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            z: Math.random() * w,
+            o: Math.random()
+        });
+    }
+
+    function draw() {
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, w, h);
+        ctx.fillStyle = "white";
+
+        stars.forEach(star => {
+            star.z -= 2;
+            if (star.z <= 0) star.z = w;
+            let k = 128.0 / star.z;
+            let px = star.x * k + w / 2;
+            let py = star.y * k + h / 2;
+
+            if (px >= 0 && px <= w && py >= 0 && py <= h) {
+                let size = (1 - star.z / w) * 3;
+                ctx.globalAlpha = star.o;
+                ctx.beginPath();
+                ctx.arc(px, py, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        });
+
+        requestAnimationFrame(draw);
+    }
+    draw();
 });
