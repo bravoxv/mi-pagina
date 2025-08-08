@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¡Conéctate conmigo! - Tus Redes y Streaming</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Enlace a la fuente Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Enlace a los estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Enlace a la librería three.js desde un CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <!-- Canvas de la galaxia -->
+    <!-- Canvas para el fondo de la galaxia 3D -->
     <canvas id="galaxy"></canvas>
 
     <div class="top-bar-buttons">
@@ -41,6 +45,7 @@
 
     <div class="container">
         <header>
+            <!-- Asegúrate de reemplazar "tu_foto_de_perfil.jpg" con la ruta correcta de tu imagen -->
             <img src="tu_foto_de_perfil.jpg" alt="Tu Foto de Perfil" class="profile-pic">
             <h1>¡Hola! Soy BRAVOXV</h1>
             <p>¡Bienvenido/a! Aquí encontrarás todos mis enlaces a redes sociales y canales de streaming.</p>
@@ -59,8 +64,10 @@
         <footer>
             <p>© 2025 bravoxv. Todos los derechos reservados.</p>
         </footer>
+
     </div>
 
+    <!-- Enlace al script principal, que ahora contiene la animación de three.js -->
     <script src="script.js"></script>
 </body>
 </html>
