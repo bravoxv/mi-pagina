@@ -8,19 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Canvas de la galaxia -->
+    <canvas id="galaxy"></canvas>
+
     <div class="top-bar-buttons">
         <div class="comment-container">
             <button id="comment-button" class="comment-toggle-button">Comentar</button>
             <div id="comments-section" class="comments-section">
                 <h2>Comentarios</h2>
-                <div class="utterances-container">
-                    <script src="https://utteranc.es/client.js"
-                            repo="bravoxv/mi-pagina"
-                            issue-term="pathname"
-                            crossorigin="anonymous"
-                            async>
-                    </script>
-                </div>
+                <div class="utterances-container"></div>
             </div>
         </div>
         <div class="donate-dropdown-container">
@@ -42,6 +38,7 @@
             </div>
         </div>
     </div>
+
     <div class="container">
         <header>
             <img src="tu_foto_de_perfil.jpg" alt="Tu Foto de Perfil" class="profile-pic">
@@ -63,8 +60,7 @@
             <p>© 2025 bravoxv. Todos los derechos reservados.</p>
         </footer>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
-
