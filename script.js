@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(renderer.domElement);
 
     // 3. Crear las estrellas (puntos blancos) y galaxia
+    // Se ha modificado para que las estrellas sean más redondas y suaves
     const starsGeometry = new THREE.BufferGeometry();
     const starCount = 1000;
     const starPositions = [];
@@ -45,7 +46,16 @@ document.addEventListener('DOMContentLoaded', function() {
         new THREE.Float32BufferAttribute(starPositions, 3)
     );
 
-    const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.1 });
+    // Creamos una textura circular para los puntos
+    const particleTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/sprites/circle.png');
+    
+    const starsMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.1,
+        map: particleTexture, // Usamos la textura para los puntos
+        blending: THREE.AdditiveBlending, // Para que brillen
+        transparent: true
+    });
     const stars = new THREE.Points(starsGeometry, starsMaterial);
     scene.add(stars);
 
@@ -68,7 +78,13 @@ document.addEventListener('DOMContentLoaded', function() {
         new THREE.Float32BufferAttribute(galaxyPositions, 3)
     );
 
-    const galaxyMaterial = new THREE.PointsMaterial({ color: 0xffeeaa, size: 0.15 });
+    const galaxyMaterial = new THREE.PointsMaterial({
+        color: 0xffeeaa,
+        size: 0.15,
+        map: particleTexture, // Usamos la textura para los puntos de la galaxia también
+        blending: THREE.AdditiveBlending,
+        transparent: true
+    });
     const galaxy = new THREE.Points(galaxyGeometry, galaxyMaterial);
     scene.add(galaxy);
 
@@ -92,11 +108,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ======================================
-    // LOGICA DE COMENTARIOS, DONACIONES Y TEMA
+    // LOGICA DE COMENTARIOS Y DONACIONES
     // ======================================
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
+    // Se ha eliminado la lógica del cambio de tema.
     function setUtterancesTheme(themeName) {
         const utterancesContainer = document.querySelector('.utterances-container');
         if (utterancesContainer) {
@@ -112,32 +126,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Tema guardado
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        body.classList.add('light-theme');
-        themeToggle.textContent = 'Cambiar a Tema Oscuro';
-        setUtterancesTheme('github-light');
-    } else {
-        body.classList.remove('light-theme');
-        themeToggle.textContent = 'Cambiar a Tema Claro';
-        setUtterancesTheme('github-dark');
-    }
-
-    // Toggle tema
-    themeToggle.addEventListener('click', function() {
-        if (body.classList.contains('light-theme')) {
-            body.classList.remove('light-theme');
-            localStorage.setItem('theme', 'dark');
-            themeToggle.textContent = 'Cambiar a Tema Claro';
-            setUtterancesTheme('github-dark');
-        } else {
-            body.classList.add('light-theme');
-            localStorage.setItem('theme', 'light');
-            themeToggle.textContent = 'Cambiar a Tema Oscuro';
-            setUtterancesTheme('github-light');
-        }
-    });
+    // El tema ahora siempre es oscuro
+    setUtterancesTheme('github-dark');
 
     // Botón comentarios
     const commentButton = document.getElementById('comment-button');
